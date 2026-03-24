@@ -1,5 +1,7 @@
 import {cart} from '../data/cart.js' // .. is for exiting from current folder, / for opening in folder, {} brackets ke ander variable ka name likhna he jisko import krna hai
 
+import {products} from '../data/products.js'
+
 // Save the data
 let products_grid = '';
 
