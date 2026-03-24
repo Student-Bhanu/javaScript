@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <button>hello</button>
+    <button class="js-button">Second button</button>
+
+
+
+
+
+
+    <script>
+        // document is a object in JS 
+        console.log(typeof document);
+        console.log(document.title); // document property
+        document.title = 'Changed';
+        console.log(document.title);
+
+        // it will give you body of the html 
+        console.log(document.body); 
+        console.log(typeof document.body);
+        // console.log(document.body.innerHTML);
+        // document.body.innerHTML = '<button>New Button</button>';
+
+        // this is will only select first button
+        const buttonElement = document.querySelector('button');
+        // elements of html are the objects of javaScript 
+        console.log(typeof buttonElement);
+        // every html element in javaScript is object and has innerHTML property, from which we can change the value inside that html element
+        buttonElement.innerHTML = 'Bhanu';
+        console.log(buttonElement.innerHTML);
+
+
+        // (.) for selecting class 
+        const buttonElement2 = document.querySelector('.js-button');
+        console.log(buttonElement2);
+        console.log(buttonElement2.innerHTML);
+    </script>
+</body>
+
+</html>

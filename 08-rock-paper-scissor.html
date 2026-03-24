@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissor</title>
+</head>
+
+<body>
+    <p>Rock Paper Scissor</p>
+    <button onClick="
+    playerGame('Rock');
+    ">Rock</button>
+
+    <button onClick="
+    playerGame('Paper');
+    ">Paper</button>
+
+    <button onClick="
+    playerGame('Sciossors');
+    ">Scissors</button>
+
+    <button onClick="
+    // it will delete the stored value
+    localStorage.removeItem('scores');
+    ">Reset Scores</button>
+
+    <script>
+        // using default operator( || )
+        let scores = JSON.parse(localStorage.getItem('scores')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+
+        // if value does not exist in localStorage then it will return null(nothing), so when we try to access the value , we get an error
+
+        function playerGame(PlayerMove) {
+            const computerGuess = pickComputerMove();
+            if (PlayerMove === 'Rock') {
+                if (computerGuess === 'Rock') {
+                    scores.ties++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. Match tie\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+                else if (computerGuess === 'Paper') {
+                    scores.losses++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Lose\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+                else {
+                    scores.wins++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Win\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+            }
+            else if (PlayerMove === 'Paper') {
+                const computerGuess = pickComputerMove();
+                if (computerGuess === 'Rock') {
+                    scores.wins++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Win\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+                else if (computerGuess === 'Paper') {
+                    scores.ties++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. Match Tie\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+                else {
+                    scores.losses++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Lose\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+            }
+            else {
+                const computerGuess = pickComputerMove();
+                if (computerGuess === 'Rock') {
+                    scores.losses++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}.. You Lose\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+                else if (computerGuess === 'Paper') {
+                    scores.wins++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Win\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+                else {
+                    scores.ties++;
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. Match Tie\nwins = ${scores.wins}, losses = ${scores.losses}, ties = ${scores.ties}`);
+                }
+            }
+
+            localStorage.setItem('scores', JSON.stringify(scores));
+        }
+
+        function pickComputerMove() {
+            let randomNum = Math.round(Math.random() * 10) % 3;
+            let computerGuess = '';
+            if (randomNum === 0) {
+                computerGuess = 'Rock';
+            }
+            else if (randomNum === 1) {
+                computerGuess = 'Paper';
+            }
+            else {
+                computerGuess = 'Sciossors';
+            }
+            return computerGuess;
+        }
+
+    
+    </script>
+</body>
+
+</html>

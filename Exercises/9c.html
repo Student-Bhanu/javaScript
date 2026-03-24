@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="js-button1" onclick="
+        messageDisplay('heads');
+        ">heads</button>
+
+    <button class="js-button2" onClick="
+    messageDisplay('Tails')
+    ">tails</button>
+    <p class="message"></p>
+
+    <script>
+        function messageDisplay(chose) {
+            document.querySelector('.message').innerHTML = `You choose : ${chose}`;
+        }
+    </script>
+</body>
+
+</html>

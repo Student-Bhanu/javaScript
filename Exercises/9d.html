@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input placeholder="Enter your name" type="text" class="inputBox" onkeydown="
+        handleTheKey(event);
+        ">
+    <button onClick="
+    fetchName()
+    ">Submit</button>
+    <p class="message"></p>
+
+
+    <script>
+        function handleTheKey(event) {
+            if (event.key === 'Enter') {
+                fetchName();
+            }
+        }
+        function fetchName() {
+            const name = document.querySelector('.inputBox').value;
+
+            messageShow(name);
+        }
+
+        function messageShow(name) {
+            document.querySelector('.message').innerHTML = `Your name is : ${name}`;
+        }
+    </script>
+</body>
+
+</html>

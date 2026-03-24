@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Booleans</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+
+    <script>
+        /*console.log(typeof true);
+        // checks value
+        console.log(3 == '3.00');
+
+        // checks datatype as well
+        console.log(3 === '3.00');
+        // same as above
+
+        console.log(3 != '3');
+        console.log(3 !== '3');
+ 
+        if(true){
+         console.log("Hello");
+        }
+        else{
+         console.log('Logging out');
+        }
+ 
+        if(3 >= 18){
+         console.log('You are eligible to drive...');
+        }
+        else if(18 - 17 <= 1){
+         console.log('You are almost eligible to drive...');
+        }
+        else{
+         console.log('You can\'t drive...');
+        }
+         */
+
+        // Logical Operator
+        /*
+        console.log(5 > 3 && 3 < 5);
+        console.log(5 > 3 || 3 < 5);
+        console.log(!1);
+        */
+
+        // 5 behaves like true value 
+        // if (5) {
+        //     console.log('Truthy.');
+        // }
+
+        // if(0){
+        //     console.log('Falsy');
+        // }
+
+        // falsy value
+        // 0, '', false, null, NaN, undefined 
+        // all rest are true value 
+
+        // NaN -> not a number 
+        // console.log('hello' / 5);
+
+        // undefined -> doesn't have a value
+        // let variable1;
+        // console.log(variable1);
+
+
+        // shortcuts
+        // ternary operator 
+        let decision = (5 > 4) ? 'True' : 'False';
+        console.log('decision = ', decision);
+
+        // guard operator (short-circuit && operator)
+        // if the first value is false it never checks rest of the values
+        // it assigns the falsy ans truthy value not false and true boolean value 
+
+        let guard = 0 && 'hello';
+        console.log('guard = ', guard);
+
+        let guard2 = 1 && 'hello';
+        console.log('guard2 = ', guard2);
+
+        // default operator
+        let currency = 'RUPAY' || 'DOLLAR';
+        console.log('currency = ', currency);
+
+        currency = undefined || 'DOLLAR'; // default is dollar
+        console.log('currency = ', currency);
+    </script>
+</body>
+
+</html>

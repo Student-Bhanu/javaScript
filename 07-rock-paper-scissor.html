@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissor</title>
+</head>
+
+<body>
+    <p>Rock Paper Scissor</p>
+    <button onClick="
+    playerGame('Rock');
+    ">Rock</button>
+
+    <button onClick="
+    playerGame('Paper');
+    ">Paper</button>
+
+    <button onClick="
+    playerGame('Sciossors');
+    ">Scissors</button>
+    <script>
+        function playerGame(PlayerMove) {
+            const computerGuess = pickComputerMove();
+            if (PlayerMove === 'Rock') {
+                if (computerGuess === 'Rock') {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. Match tie`);
+                }
+                else if (computerGuess === 'Paper') {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Lose`);
+                }
+                else {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Win`);
+                }
+            }
+            else if (PlayerMove === 'Paper') {
+                const computerGuess = pickComputerMove();
+                if (computerGuess === 'Rock') {
+                    alert('You chose Paper. Computer chose Rock. You Won');
+                }
+                else if (computerGuess === 'Paper') {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. Match Tie`);
+                }
+                else {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Lose`);
+                }
+            }
+            else {
+                const computerGuess = pickComputerMove();
+                if (computerGuess === 'Rock') {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}.. You Lose`);
+                }
+                else if (computerGuess === 'Paper') {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. You Won`);
+                }
+                else {
+                    alert(`You chose ${PlayerMove}. Computer chose ${computerGuess}. Match Tie`);
+                }
+            }
+        }
+
+        function pickComputerMove() {
+            let randomNum = Math.round(Math.random() * 10) % 3;
+            let computerGuess = '';
+            if (randomNum === 0) {
+                computerGuess = 'Rock';
+            }
+            else if (randomNum === 1) {
+                computerGuess = 'Paper';
+            }
+            else {
+                computerGuess = 'Sciossors';
+            }
+            return computerGuess;
+        }
+
+        // parametrized function 
+        function calculateTax(cost) {
+            return cost * 0.1;
+        }
+
+        console.log(calculateTax(1000));
+    </script>
+</body>
+
+</html>

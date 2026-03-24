@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissor</title>
+</head>
+
+<body>
+    <p>Rock Paper Scissor</p>
+    <button onClick="
+    let computerGuess = Math.round(Math.random()*10) % 3;
+
+    if(computerGuess === 0){
+        alert('You chose Rock. Computer chose Rock. Match tie');
+    }
+    else if(computerGuess === 1){
+        alert('You chose Rock. Computer chose Paper. You Lose');
+    }
+    else{
+        alert('You chose Rock. Computer chose Scissors. You Win');
+    }
+    ">Rock</button>
+
+    <button onClick="
+    computerGuess = Math.round(Math.random()*10) % 3;
+    if(computerGuess === 0){
+        alert('You chose Paper. Computer chose Rock. You Won');
+    }
+    else if(computerGuess === 1){
+        alert('You chose Paper. Computer chose Paper. Match Tie');
+    }
+    else{
+        alert('You chose Paper. Computer chose Scissors. You Lose');
+    }
+    ">Paper</button>
+
+    <button onClick="
+    computerGuess = Math.round(Math.random()*10) % 3;
+    if(computerGuess === 0){
+        alert('You chose Scissors. Computer chose Rock. You Lose');
+    }
+    else if(computerGuess === 1){
+        alert('You chose Scissors. Computer chose Paper. You Won');
+    }
+    else{
+        alert('You chose Scissors. Computer chose Scissors. Match Tie');
+    }
+    ">Scissors</button>
+    <script>
+
+    </script>
+</body>
+
+</html>

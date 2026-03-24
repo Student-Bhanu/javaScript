@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount</title>
+</head>
+
+<body>
+    <script>
+
+        let age = Math.round(Math.random() * 100) % 100;
+        const isHoliday = (Math.round(Math.random() * 10) % 2) ? true : false;
+
+        console.log(age);
+        console.log('Holiday = ', isHoliday);
+        if (!isHoliday && (age <= 6 || age >= 65)) {
+            console.log('Discount');
+        }
+        else {
+            console.log('No Discount');
+        }
+    </script>
+</body>
+
+</html>

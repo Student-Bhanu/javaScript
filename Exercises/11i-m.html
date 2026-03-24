@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+</head>
+
+<body>
+    <script>
+        function minMax(nums) {
+            let min = nums[0];
+            let max = nums[0];
+            if (nums.length === 0) {
+                return {
+                    min: null,
+                    max: null
+                };
+            }
+            
+            for (let i = 1; i < nums.length; i++) {
+                min = Math.min(nums[i], min);
+                max = Math.max(nums[i], max);
+            }
+
+            const obj = {
+                min,
+                max
+            }
+
+            return obj;
+        }
+
+        console.log(minMax([0, 2, 3, 4, -5, 7, 8, 9, 10]));
+    </script>
+</body>
+2
+</html>

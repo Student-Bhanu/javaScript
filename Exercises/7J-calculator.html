@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <p>
+
+        <button onclick="
+        add('1');
+        console.log(calculation);
+        ">1</button>
+
+        <button onclick="
+        add('2');
+        console.log(calculation);
+        ">2</button>
+
+        <button onclick="
+        add('3');
+        console.log(calculation);
+        ">3</button>
+
+        <button onclick="
+        add(' + ');
+        console.log(calculation);
+        ">+</button>
+
+    </p>
+    <p>
+
+        <button onclick="
+        add('4');
+        console.log(calculation);
+        ">4</button>
+
+        <button onclick="
+        add('5');
+        console.log(calculation);
+        ">5</button>
+
+        <button onclick="
+        add('6');
+        console.log(calculation);
+        ">6</button>
+
+        <button onclick="
+        add(' - ');
+        console.log(calculation);
+        ">-</button>
+
+    </p>
+
+    <p>
+
+        <button onclick="
+        add('7');
+        console.log(calculation);
+        ">7</button>
+
+        <button onclick="
+        add('8');
+        console.log(calculation);
+        ">8</button>
+
+        <button onclick="
+        add('9');
+        console.log(calculation);
+        ">9</button>
+
+        <button onclick="
+        add(' * ');
+        console.log(calculation);
+        ">*</button>
+
+    </p>
+
+    <p>
+
+        <button onclick="
+        add('0');
+        console.log(calculation);
+        ">0</button>
+
+        <button onclick="
+        add('.');
+        console.log(calculation);
+        ">.</button>
+
+        <button onclick="
+    calculation = eval(calculation);
+    console.log(calculation);
+    ">=</button>
+
+        <button onclick="
+        add('/');
+        console.log(calculation);
+        ">/</button>
+
+    </p>
+
+    <p>
+
+        <button onclick="
+        calculation = '';
+        console.log('Cleared.');
+        ">Clear</button>
+    </p>
+
+    <script>
+        let calculation = '';
+        function add(type) {
+            calculation += type;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock-paper-Scissor</title>
+    <link rel="stylesheet" href="styles/style2.css">
+</head>
+
+<body>
+    <p class="heading">rock paper Scissor</p>
+
+    <button onClick="
+    playerGame('rock');
+    " class="gesture-container">
+        <img class="gesture" src="images/rock-emoji.png" alt=""></button>
+
+    <button onClick="
+    playerGame('paper');
+    " class="gesture-container">
+        <img class="gesture" src="images/paper-emoji.png" alt="">
+    </button>
+
+    <button onClick="
+    playerGame('scissors');
+    " class="gesture-container">
+        <img class="gesture" src="images/scissors-emoji.png" alt="">
+    </button>
+
+    <p class="js-greets greets-message"></p>
+    <p class="js-message"></p>
+    <p class="js-scores results">
+        wins: 0, lose : 0, ties: 0
+    </p>
+
+    <button onClick="
+    scores.wins = 0;
+    scores.losses = 0;
+    scores.ties = 0;
+
+    // it will delete the stored value
+    localStorage.removeItem('scores');
+
+    updateGreets(null);
+    updateMessage(null, null);
+    " class="reset-score-button">Reset Scores</button>
+    <script src="scripts/10-rock-paper-scissor.js"></script>
+</body>
+
+</html>

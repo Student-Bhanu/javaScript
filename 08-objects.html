@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+
+<body>
+    <script>
+        // objects group multiple values together 
+        /*
+        const obj = {
+            name: 'Bhanu Prabhat',
+            rollNo: 52,
+
+        }
+        console.log(typeof obj);
+        console.log(obj);
+        console.log(typeof obj.name);
+        console.log(obj.name);
+        console.log(typeof obj.rollNo);
+        console.log(obj.rollNo);
+
+        obj.name = 'Bhanu Prabhat Suryavansham'; // updating the value
+        console.log(obj.name);
+
+        obj.course = 'Btech(MCE)'; // adding new value to object
+        console.log(obj.course);
+
+        console.log(obj.class); // undefined value
+
+        delete obj.course; // delete the course property in object
+        console.log(obj);
+        */
+
+        const product2 = {
+            name: 'Shirt',
+            ['delivery-time']: '1-Day',
+            'delivery-date': '24/02/2026',  // we don't need square bracket if it is string
+            // This is called method(function inside object)
+            fun: function function1() {
+                console.log('Function inside object');
+            },
+            rating: {
+                stars: 4.5,
+                count: 100
+            }
+        };
+
+        console.log(product2['name']);   // another method to access property value
+
+        // when dot notation gives error
+        // console.log(product2.delivery-time);  // JS interpret(-) as negative sign, so it gives error
+
+        console.log(product2['delivery-time']); // that's how we access these elements
+
+        console.log(product2['delivery-date']);
+        console.log(product2.rating.count);
+        product2.fun();
+        console.log(typeof product2.fun);
+        console.log(typeof product2.rating);
+
+        // JSON(it is a method of JS, which make objects, but less features from JS, like only double quotes are allowed for string, and no function can be inside JSON object)
+        // converts JS object to JSON object
+        const jsonObject = JSON.stringify(product2);
+        console.log(jsonObject);
+        console.log(typeof jsonObject);
+        // vice versa
+        const jsObjects = JSON.parse(jsonObject);
+        console.log(jsObjects);
+        console.log(typeof jsObjects);
+        console.log(jsObjects.rating.count);
+
+        // localStorage(stored value permanently in local storage so if page is reload then value do not vanish)
+        // it stores in some sort of key value(so to store and access, we need key, the value that we are storing must be string that's why we use JSON Objetc)
+        localStorage.setItem('trigger', jsonObject);
+        let localStoredVal = localStorage.getItem('trigger');
+        console.log('localStorage = ',typeof localStoredVal);
+
+        // auto boxing(JS first wrap the string or any dataype into a box and that box has special properties and methods that we are using below)
+        // length is property 
+        console.log('hello'.length);
+        // toUppercase() is method of auto box 
+        console.log('hello'.toUpperCase());
+        console.log('hello'.toLowerCase());
+        // converts to string
+        console.log(2.3.toString());
+
+        // objects are references
+        // object1 is reference to memory location where the data is stored(not storing value itself and taking memory location)
+        const object1 = {
+            message: 'hello to everyone'
+        };
+        // now both are reference to same memory location 
+        const object2 = object1;
+        object1.message = 'Good Morning';
+        // const only prevents the object1 to do not reference to other memory location in later but not prevents to change the data inside that memory location
+        console.log(object1);
+        // both references to same memory locationo, that's why the value changs for both
+        console.log(object2);
+
+        // we can't compare objects directly
+        const object3 = {
+            message: 'Good Morning'
+        };
+
+        // it compare the reference address not the value inside it
+        console.log(object1 === object3);
+        // both references to same address
+        console.log(object1 === object2);
+
+        // some shortcuts
+        // 1. destructuring
+        // if variable and property name is same then we can use this shortcut 
+
+        // const message = object3.message;
+        const { message } = object3;
+        console.log(message);
+
+        const object4 = {
+            name: 'Bhanu Prabhat',
+            rollNo: 52
+        };
+
+        const { name, rollNo } = object4;
+        console.log(name);
+        console.log(rollNo);
+
+        // 2. shorthand property 
+        const object5 = {
+            // if the property and value is same then we can use this type of shortcut 
+            // message: message
+            message
+        };
+        console.log(object5);
+
+        // 3. shorthand 
+        const object6 = {
+            // this same as
+            // func: function func1() {
+            //     console.log('I am inside the object');
+            // }
+
+            func1(){
+                console.log('I am inside the object');
+            }
+        };
+        object6.func1();
+    </script>
+</body>
+
+</html>

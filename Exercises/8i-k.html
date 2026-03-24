@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip</title>
+</head>
+
+<body>
+    <button onClick="
+    result('heads');
+    ">heads</button>
+
+    <button onClick="
+    result('tails');
+    ">Tails</button>
+
+    <button onClick="
+    localStorage.removeItem('trigger');
+    ">Reset</button>
+
+    <script>
+        let scores = JSON.parse(localStorage.getItem('trigger')) || {
+            wins: 0,
+            lose: 0
+        };
+
+        function result(guess) {
+            const randomNum = Math.round(Math.random() * 10) % 2;
+            let computerGuess = '';
+            if (randomNum === 0) {
+                computerGuess = 'heads';
+            }
+            else {
+                computerGuess = 'tails';
+            }
+
+            if (guess === computerGuess) {
+                scores.wins++;
+                console.log(`You won\nwins = ${scores.wins}, lose = ${scores.lose}`);
+            }
+            else {
+                scores.lose++;
+                console.log(`You lose\nwins = ${scores.wins}, lose = ${scores.lose}`);
+            }
+            localStorage.setItem('trigger', JSON.stringify(scores));
+        }
+    </script>
+</body>
+
+</html>

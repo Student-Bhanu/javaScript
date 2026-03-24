@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+
+<body>
+    <script>
+        const product1 = {
+            name: 'CPU',
+            price: 12000
+        };
+
+        const product2 = {
+            name: 'Graphic Card',
+            price: 23000
+        };
+
+        function comparePrice(product1, product2) {
+            if (product1.price > product2.price) {
+                return product1;
+            }
+            else {
+                return product2;
+            }
+        }
+
+        function isSameProduct(product1, product2) {
+            if (product1.name === product2.name && product1.price === product2.price) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        console.log(comparePrice(product1, product2));
+        console.log(isSameProduct(product1, product2));
+
+        const str1 = 'test';
+        const str2 = str1.repeat(3);
+        console.log(str2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>button</title>
+    <style>
+        button {
+            border: none;
+            background-color: rgb(230, 230, 230);
+            padding: 15px;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="Gaming" onclick="
+    change('Gaming');
+    ">Gaming</button>
+
+    <button class="Music" onclick="
+    change('Music');
+    ">Music</button>
+
+    <button class="Tech" onclick="
+    change('Tech');
+    ">Tech</button>
+
+    <script>
+        function change(name) {
+            const buttonElementPrimary = document.querySelector(`.${name}`);
+
+            let buttonElementSecondary = '';
+
+            let buttonElementTertiary = '';
+
+            if(name === 'Gaming'){
+                buttonElementSecondary = document.querySelector('.Music');
+
+                buttonElementTertiary = document.querySelector('.Tech');
+            }
+            else if(name === 'Music'){
+                buttonElementSecondary = document.querySelector('.Gaming');
+
+                buttonElementTertiary = document.querySelector('.Tech');
+            }
+            else{
+                buttonElementSecondary = document.querySelector('.Gaming');
+
+                buttonElementTertiary = document.querySelector('.Music');
+            }
+
+            const isContain = buttonElementPrimary.classList.contains('is-toggled');
+
+            if (isContain) {
+                buttonElementPrimary.classList.remove('is-toggled');
+            }
+            else {
+                buttonElementPrimary.classList.add('is-toggled');
+                buttonElementSecondary.classList.remove('is-toggled');
+
+                buttonElementTertiary.classList.remove('is-toggled');
+            }
+        }
+    </script>
+</body>
+
+</html>

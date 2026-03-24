@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissor</title>
+</head>
+
+<body>
+    <p>Rock Paper Scissor</p>
+    <button onClick="
+    playerGame('Rock');
+    ">Rock</button>
+
+    <button onClick="
+    playerGame('Paper');
+    ">Paper</button>
+
+    <button onClick="
+    playerGame('Sciossors');
+    ">Scissors</button>
+
+    <p class="js-greets"></p>
+    <p class="js-message"></p>
+    <p class="js-scores">
+        wins: 0, lose : 0, ties: 0
+    </p>
+
+    <button onClick="
+    scores.wins = 0;
+    scores.losses = 0;
+    scores.ties = 0;
+
+    // it will delete the stored value
+    localStorage.removeItem('scores');
+
+    updateGreets(null);
+    updateMessage(null, null);
+    ">Reset Scores</button>
+
+    <script>
+        // using default operator( || )
+        let scores = JSON.parse(localStorage.getItem('scores')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+
+        // if value does not exist in localStorage then it will return null(nothing), so when we try to access the value , we get an error
+
+        function playerGame(PlayerMove) {
+            const computerGuess = pickComputerMove();
+            let result = '';
+            if (PlayerMove === 'Rock') {
+                if (computerGuess === 'Rock') {
+                    scores.ties++;
+                    result = 'tie';
+                }
+                else if (computerGuess === 'Paper') {
+                    scores.losses++;
+                    result = 'lose';
+                }
+                else {
+                    scores.wins++;
+                    result = 'win';
+                }
+            }
+            else if (PlayerMove === 'Paper') {
+                const computerGuess = pickComputerMove();
+                if (computerGuess === 'Rock') {
+                    scores.wins++;
+                    result = 'win';
+                }
+                else if (computerGuess === 'Paper') {
+                    scores.ties++;
+                    result = 'tie';
+                }
+                else {
+                    scores.losses++;
+                    result = 'lose';
+                }
+            }
+            else {
+                const computerGuess = pickComputerMove();
+                if (computerGuess === 'Rock') {
+                    scores.losses++;
+                    result = 'lose';
+                }
+                else if (computerGuess === 'Paper') {
+                    scores.wins++;
+                    result = 'win';
+                }
+                else {
+                    scores.ties++;
+                    result = 'tie';
+                }
+            }
+
+            updateGreets(result);
+            updateMessage(PlayerMove, computerGuess);
+
+            localStorage.setItem('scores', JSON.stringify(scores));
+        }
+
+        function pickComputerMove() {
+            let randomNum = Math.round(Math.random() * 10) % 3;
+            let computerGuess = '';
+            if (randomNum === 0) {
+                computerGuess = 'Rock';
+            }
+            else if (randomNum === 1) {
+                computerGuess = 'Paper';
+            }
+            else {
+                computerGuess = 'Sciossors';
+            }
+            return computerGuess;
+        }
+
+
+        function updateScores() {
+            const scoreElement = document.querySelector('.js-scores');
+            scoreElement.innerText = `wins : ${scores.wins}, lose : ${scores.losses}, ties : ${scores.ties}`;
+        }
+
+        function updateMessage(playerMove, computerGuess) {
+            const messageElement = document.querySelector('.js-message');
+            if (playerMove === null && computerGuess === null) {
+                messageElement.innerText = '';
+            }
+            else {
+                messageElement.innerText = `You ${playerMove}. Computer ${computerGuess}`;
+            }
+
+            updateScores();
+        }
+
+        function updateGreets(result) {
+            const greetElement = document.querySelector('.js-greets');
+
+            if (result === 'lose' || result === 'win') {
+                greetElement.innerText = `You ${result}`;
+            }
+            else if (result === 'tie') {
+                greetElement.innerText = `Match Tie`;
+            }
+            else {
+                greetElement.innerText = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

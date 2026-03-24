@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <p>YouTube Subscribe Button</p>
+    <button class="js-subscribe subscribe-button" onClick="
+    subscribe();
+    "> Subscribe </button>
+    <br>
+    <p>Amazon Shipping Calculator</p>
+    <p>Order under $40 = +$10 shipping</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input class="js-amount input-area" placeholder="Cost of order" type="text" onkeyDown="
+    handleEnterkeyDown(event);
+    ">
+    <button onClick="
+    calculateCost();
+    " class="calculate-button">Calculate</button>
+    <p class="js-amount-show"></p>
+
+
+    <script>
+        // this represents the whole browser 
+        console.log(window);
+        window.console.log('Window');
+        // window.alert('Window');
+
+
+
+        function handleEnterkeyDown(event) {
+            console.log(event);
+            if (event.key === 'Enter') {
+                calculateCost();
+            }
+        }
+
+        function calculateCost() {
+            const costElement = document.querySelector('.js-amount');
+            let cost = Number(costElement.value);
+            if (cost < 0) {
+                const messageElement = document.querySelector('.js-amount-show');
+                messageElement.innerHTML = `Error: cost cannot be less than $0.`;
+                messageElement.classList.add('warning');
+                return;
+            }
+            
+            if (cost < 40) {
+                cost += 10;
+            }
+
+            const messageElement = document.querySelector('.js-amount-show');
+            messageElement.innerHTML = `$${cost}`;
+            messageElement.classList.remove('warning');
+            
+        }
+
+        function subscribe() {
+            const subsButton = document.querySelector('.js-subscribe');
+            // innerText for only text not any spaces 
+            if (subsButton.innerText === 'Subscribe') {
+                subsButton.innerText = 'Subscribed';
+                // html element in javaScript has objects, classList is a object and it has many property and methods
+                // add property adds the another class we want to
+                subsButton.classList.add('is-subscribed');
+            }
+            else {
+                subsButton.innerText = 'Subscribe';
+                // remove will remove the class which we want to
+                subsButton.classList.remove('is-subscribed');
+            }
+        }
+    </script>
+</body>
+
+</html>

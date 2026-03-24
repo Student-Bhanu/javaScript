@@ -1,0 +1,44 @@
+body {
+    font-family: arial;
+    background-color: rgb(25, 25, 25);
+    font-weight: bold;
+    color: white;
+
+}
+
+.heading {
+    font-size: 30px;
+    color: white;
+
+}
+
+.gesture-container {
+    background-color: transparent;
+    height: 100px;
+    width: 100px;
+    border: 3px solid white;
+    border-radius: 100px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.gesture {
+    background-color: transparent;
+    height: 50px;
+}
+
+.greets-message{
+    font-size: 25px;
+}
+
+.results{
+    margin-top: 60px;
+
+}
+
+.reset-score-button{
+    font-size: 15px;
+    padding: 8px 15px;
+    cursor: pointer;
+}

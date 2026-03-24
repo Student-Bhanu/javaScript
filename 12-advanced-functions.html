@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Function</title>
+</head>
+
+<body>
+    <button class="click-button">Click</button>
+    <script>
+        /*
+        // anonymous function
+        const func1 = function () {
+            console.log('Anonymous Function');
+        };
+
+        console.log(typeof func1);
+        console.log(func1);
+        // we can call it
+        func1();
+        // but just like function we can call it from anywhere we can't do that is here, we can only call anonymous function after declaring it()
+
+        // passing funtion to function
+        function run(param){
+            console.log('Inside run function');
+            param();
+        }
+
+        run(func1);
+        */
+
+        // Asynchronous Code
+        // setTimeout(function, time before running the function(in ms))
+        // setTimeout(function () {
+        //     console.log('SetTimeOut');
+        // }, 3000);
+
+        // above code will not wait to run that function , rather it sets the timer and executing remaining programme , after the timer ends the function will execute, this is called Asynchronous Coding
+
+        // console.log('Next Line');
+
+        // it will run the code in the interval of timeperiod, continously running code
+        // setInterval(function () {
+        //     console.log('SetInterval');
+        // }, 3000);
+
+        // for each loop
+        // it will loop through the each element of array 
+        /*
+        [
+            'Make dinner',
+            'Make breakfast',
+            'Make lunch'
+        ].forEach(function (value, index) {
+            // in forEach loop, break is not easily available, so we have to use normal loop
+            if(value === 'Make dinner'){
+                return; // it will work as continue
+            }
+            console.log(value, index);
+        });
+        */
+
+        /*
+        // arrow function
+        const arrowFunc1 = () => {
+            console.log('hello world');
+        };
+
+        // arrowFunc1();
+
+        const arrowFunc2 = (val1, val2) => {
+            return val1 + val2;
+        };
+
+        console.log(arrowFunc2(1, 2));
+
+        // shortcuts in arrow function
+        // for one parameter we can remove brackets
+
+        const arrowFunc3 = val1 => {
+            return val1 * val1;
+        };
+
+        console.log(arrowFunc3(12));
+
+        // it will return the sum, we don't need to write the return statement
+        const arrowFunc4 = () => 2 + 3;
+        console.log(arrowFunc4());
+
+        // it will print the statement
+        const arrowFunc5 = () => console.log('One line Arrow function');
+        arrowFunc5();
+
+
+        const listener = () => {
+            console.log('Clicked Button');
+        };
+
+
+        // like the onclick works, but we can add multiple event listeners
+        // addEventListener(event, function to be execute)
+        const buttonElement = document.querySelector('.click-button');
+        buttonElement.addEventListener('click', listener);
+
+        // both will execute
+        const listener2 = () => {
+            console.log('Clicked Button2');
+        };
+        buttonElement.addEventListener('click', listener2);
+
+        // remove the first event listener to button
+        buttonElement.removeEventListener('click', listener);
+        */
+
+        // filter, it go through each value of array and return a truth and false value, if the return is true then it will create a new array and store that value in that array and if the return is false then it will not add that element in new array
+        const newArr = [-3, 4, 10, -1, 0].filter((value, index) => {
+            return value > 0;
+        });
+        console.log(newArr);
+
+        // map, it will go through the each value of array and return the value which will store in the new array
+        const newArr2 = [-3, 4, 10, -1, 0].map((value, index) => {
+            return value * index;
+        });
+        console.log(newArr2);
+    </script>
+
+</body>
+
+</html>

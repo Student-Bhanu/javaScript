@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positive</title>
+</head>
+
+<body>
+    <script>
+        const l = [-2, 3, 4, 5, -4, -10];
+        // let count = 0;
+        // l.forEach((value) => {
+        //     if (value > 0) count++;
+        // });
+        // console.log(count);
+
+        // function addNum(arr, num) {
+        //     const newList = arr.map(value => value + num);
+        //     return newList;
+        // }
+        // console.log(addNum(l, 15));
+
+        const arr = ['egg', 'apple', 'egg', 'egg', 'ham'];
+        // function removeEgg(arr) {
+        //     const newList = arr.filter(value => value !== 'egg');
+        //     return newList;
+        // }
+        // console.log(removeEgg(arr));
+
+        function updatedRemoveEggs(arr) {
+            let removedEggs = 0;
+            const newArr = arr.filter(value => {
+                if (value !== 'egg' || (value === 'egg' && removedEggs++ < 2)) {
+                    return true;
+                }
+            })
+            console.log(removedEggs);
+            return newArr;
+        }
+
+        console.log(updatedRemoveEggs(arr));
+    </script>
+</body>
+
+</html>
