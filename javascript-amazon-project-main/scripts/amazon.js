@@ -1,6 +1,7 @@
-import {cart} from '../data/cart.js' // .. is for exiting from current folder, / for opening in folder, {} brackets ke ander variable ka name likhna he jisko import krna hai
+import { cart, addToCart } from '../data/cart.js' // .. is for exiting from current folder, / for opening in folder, {} brackets ke ander variable ka name likhna he jisko import krna hai
 
-import {products} from '../data/products.js'
+import { products } from '../data/products.js'
+import { changeCurrencyFormat } from './utils/money.js'
 
 // Save the data
 let products_grid = '';
@@ -24,7 +25,7 @@ products.forEach(product => {
         </div>
 
         <div class="product-price">
-          $${(product.pricePaisa / 100).toFixed(2)}
+          $${changeCurrencyFormat(product.pricePaisa)}
         </div>
 
         <div class="product-quantity-container">
@@ -62,21 +63,8 @@ const listAddToCart = document.querySelectorAll('.js-add-to-cart');
 listAddToCart.forEach(button => {
   button.addEventListener('click', () => {
     const productId = button.dataset.productId;
+    addToCart(productId);
 
-    let matchItem;
-    cart.forEach(item => {
-      if (productId === item.productId) {
-        matchItem = item;
-      }
-    })
-    if (matchItem) {
-      matchItem.quantity++;
-    } else {
-      cart.push({
-        productId,
-        quantity: 1
-      });
-    }
     let cartQuantity = 0;
     cart.forEach(item => {
       cartQuantity += item.quantity;
