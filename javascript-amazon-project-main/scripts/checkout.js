@@ -3,6 +3,7 @@ import { products } from '../data/products.js'
 import { changeCurrencyFormat } from './utils/money.js'
 
 function showCartItem() {
+    let completePageHTML = ``;
     cart.forEach((cartItem, cartIDX) => {
         let matchItem;
         products.forEach((productItem) => {
@@ -86,15 +87,17 @@ function showCartItem() {
     </div>
     </div>`;
 
-        document.querySelector('.js-order-summary').innerHTML += HTMLtemplate;
-        //delete button
-        document.querySelectorAll('.js-delete-link').forEach(deleteLink => {
-            deleteLink.addEventListener('click', () => {
-                const productId = deleteLink.dataset.productId;
-                removeFromCart(productId);
-            })
-        });
-    })
+        completePageHTML += HTMLtemplate;
+    });
+    document.querySelector('.js-order-summary').innerHTML = completePageHTML;
+
 }
 
 showCartItem();
+document.querySelectorAll('.js-delete-link').forEach(deleteLink => {
+    deleteLink.addEventListener('click', () => {
+        const productId = deleteLink.dataset.productId;
+        removeFromCart(productId);
+        showCartItem();
+    })
+});
