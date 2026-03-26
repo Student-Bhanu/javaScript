@@ -1,4 +1,4 @@
-import { cart, removeFromCart, updateCartQuantity } from '../data/cart.js'
+import { cart, removeFromCart, updateDeliveryOption } from '../data/cart.js'
 import { products } from '../data/products.js'
 import { changeCurrencyFormat } from './utils/money.js'
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js' // default export, importing library from internet like this is called ESM library
@@ -66,6 +66,22 @@ function showCartItem() {
     });
     document.querySelector('.js-order-summary').innerHTML = completePageHTML;
 
+    document.querySelectorAll('.js-delete-link').forEach(deleteLink => {
+        deleteLink.addEventListener('click', () => {
+            const productId = deleteLink.dataset.productId;
+            removeFromCart(productId);
+            showCartItem();
+        })
+    });
+
+    document.querySelectorAll('.js-delivery-option').forEach(option => {
+        option.addEventListener('click', () => {
+            console.log(option.dataset);
+            const { productId, deliveryOptionId } = option.dataset;
+            updateDeliveryOption(productId, deliveryOptionId);
+            showCartItem();
+        });
+    });
 }
 
 function deliveryOptionsHTML(cartIDX, cartItem) {
@@ -78,7 +94,7 @@ function deliveryOptionsHTML(cartIDX, cartItem) {
         const isChecked = (deliveryItems.id === cartItem.deliveryDateId) ? 1 : 0;
 
         HTMLString += `
-        <div class="delivery-option">
+        <div data-product-id=${cartItem.productId} data-delivery-option-id=${deliveryItems.id} class="delivery-option js-delivery-option">
             <input type="radio" ${isChecked ? 'checked' : ''}
             class="delivery-option-input"
             name="delivery-option-${cartIDX + 1}">
@@ -96,10 +112,5 @@ function deliveryOptionsHTML(cartIDX, cartItem) {
 }
 
 showCartItem();
-document.querySelectorAll('.js-delete-link').forEach(deleteLink => {
-    deleteLink.addEventListener('click', () => {
-        const productId = deleteLink.dataset.productId;
-        removeFromCart(productId);
-        showCartItem();
-    })
-});
+
+
