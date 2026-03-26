@@ -4,6 +4,7 @@ import { changeCurrencyFormat } from '../utils/money.js'
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js' // default export, importing library from internet like this is called ESM library
 
 import { deliveryOptions } from '../../data/deliveryOptions.js'
+import { renderPaymentSummary } from './paymentSummary.js'
 
 export function showCartItem() {
     let completePageHTML = ``;
@@ -80,6 +81,7 @@ export function showCartItem() {
             const { productId, deliveryOptionId } = option.dataset;
             updateDeliveryOption(productId, deliveryOptionId);
             showCartItem();
+            renderPaymentSummary();
         });
     });
 }
