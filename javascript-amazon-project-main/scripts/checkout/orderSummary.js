@@ -72,6 +72,7 @@ export function showCartItem() {
             const productId = deleteLink.dataset.productId;
             removeFromCart(productId);
             showCartItem();
+            renderPaymentSummary();
         })
     });
 

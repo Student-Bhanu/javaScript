@@ -24,10 +24,8 @@ export function renderPaymentSummary() {
                 itemDetails.shippingCharges += deliveryItem.pricePaisa;
             }
         });
-
-        itemDetails.totalTax += (itemDetails.totalPrice + itemDetails.shippingCharges) * 0.1;
-
     });
+    itemDetails.totalTax = (itemDetails.totalPrice + itemDetails.shippingCharges) * 0.1;
 
     const paymentPage = document.querySelector('.js-payment-summary');
     paymentPage.innerHTML = `<div class="payment-summary-title">
@@ -51,7 +49,7 @@ export function renderPaymentSummary() {
 
         <div class="payment-summary-row">
           <div>Estimated tax (10%):</div>
-          <div class="payment-summary-money">${changeCurrencyFormat(itemDetails.totalTax)}</div>
+          <div class="payment-summary-money">$${changeCurrencyFormat(itemDetails.totalTax)}</div>
         </div>
 
         <div class="payment-summary-row total-row">
