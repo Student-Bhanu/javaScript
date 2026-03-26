@@ -1,4 +1,4 @@
-import { changeCurrencyFormat } from '../scripts/utils/money.js'
+import { changeCurrencyFormat } from '../../scripts/utils/money.js'
 
 describe('Test Suite: Formating currency', () => {
     it('changing paisa to rupay', () => {
