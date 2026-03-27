@@ -6,7 +6,7 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js' //
 import { deliveryOptions } from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSummary.js'
 
-export function showCartItem() {
+export function renderOrderSummaryPage() {
     let completePageHTML = ``;
     cart.forEach((cartItem, cartIDX) => {
         let matchItem;
@@ -25,7 +25,7 @@ export function showCartItem() {
                 deliveryDateString = deliveryDate.format('dddd, MMMM D');
             }
         });
-        let HTMLtemplate = `<div class="cart-item-container">
+        let HTMLtemplate = `<div class="cart-item-container js-cart-item-container">
     <div class="delivery-date">
         Delivery date: ${deliveryDateString}
     </div>
@@ -41,14 +41,14 @@ export function showCartItem() {
         <div class="product-price">
             $${changeCurrencyFormat(matchItem.pricePaisa)}
         </div>
-        <div class="product-quantity">
+        <div class="product-quantity js-product-quantity-${matchItem.id}">
             <span>
             Quantity: <span class="quantity-label">${cartItem.quantity}</span>
             </span>
             <span class="update-quantity-link link-primary">
             Update
             </span>
-            <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchItem.id}">
+            <span class="delete-quantity-link link-primary js-delete-link js-delete-link-${matchItem.id}" data-product-id="${matchItem.id}">
             Delete
             </span>
         </div>
@@ -71,7 +71,7 @@ export function showCartItem() {
         deleteLink.addEventListener('click', () => {
             const productId = deleteLink.dataset.productId;
             removeFromCart(productId);
-            showCartItem();
+            renderOrderSummaryPage();
             renderPaymentSummary();
         })
     });
@@ -81,7 +81,7 @@ export function showCartItem() {
             console.log(option.dataset);
             const { productId, deliveryOptionId } = option.dataset;
             updateDeliveryOption(productId, deliveryOptionId);
-            showCartItem();
+            renderOrderSummaryPage();
             renderPaymentSummary();
         });
     });
@@ -114,6 +114,4 @@ function deliveryOptionsHTML(cartIDX, cartItem) {
     return HTMLString;
 }
 
-showCartItem();
-
-
+// renderOrderSummaryPage();
