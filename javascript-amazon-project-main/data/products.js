@@ -39,7 +39,6 @@ const product1 = new Products({
     "apparel"
   ]
 });
-console.log(product1);
 
 // every element become the object of Products class
 export const products = [
@@ -704,5 +703,3 @@ export const products = [
 ].map(productDetails => {
   return new Products(productDetails);
 });
-
-console.log(products);
