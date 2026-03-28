@@ -39,7 +39,7 @@ export function renderOrderSummaryPage() {
             ${matchItem.name}
         </div>
         <div class="product-price">
-            $${changeCurrencyFormat(matchItem.pricePaisa)}
+            ${matchItem.getPrice()}
         </div>
         <div class="product-quantity js-product-quantity-${matchItem.id}">
             <span>
