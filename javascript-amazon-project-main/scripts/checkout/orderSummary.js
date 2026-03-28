@@ -78,7 +78,6 @@ export function renderOrderSummaryPage() {
 
     document.querySelectorAll('.js-delivery-option').forEach(option => {
         option.addEventListener('click', () => {
-            console.log(option.dataset);
             const { productId, deliveryOptionId } = option.dataset;
             updateDeliveryOption(productId, deliveryOptionId);
             renderOrderSummaryPage();
