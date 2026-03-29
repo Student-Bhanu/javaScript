@@ -749,3 +749,34 @@ export const products = [
   }
   return new Products(productDetails);
 });
+
+
+// practice about this
+/*
+console.log(this); // it will point to undefined
+const object3 = {
+  a: 10,
+  // b: this.a
+  // here object has not created yet so this also points to undefined 
+  method() {
+    // here this will point to object3
+    console.log(this);
+  }
+};
+object3.method();
+
+function testThis() {
+  // inside normal function this points to undefined
+  console.log(this);
+}
+testThis();
+// but we can change the value of this inside a normal funtion
+// every function has call method which is normal like calling a function but it's first parameter is the value of this and rest of the parameters are of the functions value if there is any parameter in function
+testThis.call('hello');
+
+// arrow function does not change the value of this
+
+[1, 2, 3].forEach(() => {
+  console.log(this);
+})
+*/
