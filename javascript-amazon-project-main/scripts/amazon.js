@@ -1,16 +1,21 @@
 import { cart, addToCart, updateCartQuantity } from '../data/cart.js' // .. is for exiting from current folder, / for opening in folder, {} brackets ke ander variable ka name likhna he jisko import krna hai
 
-import { products } from '../data/products.js'
+import { products, loadProductsFromBackend } from '../data/products.js'
 import { changeCurrencyFormat } from './utils/money.js'
 updateCartQuantity();
 
+// this is called callbacks when we pass function as parameter for running in future
+loadProductsFromBackend(pageRenderHTML);
 
-// Save the data
-let products_grid = '';
 
-// Dumping data on webPage
-products.forEach(product => {
-  products_grid += `<div class="product-container">
+function pageRenderHTML() {
+
+  // Save the data
+  let products_grid = '';
+
+  // Dumping data on webPage
+  products.forEach(product => {
+    products_grid += `<div class="product-container">
         <div class="product-image-container">
           <img class="product-image" src="${product.image}">
         </div>
@@ -58,17 +63,19 @@ products.forEach(product => {
           Add to Cart
         </button>
       </div>`;
-});
+  });
 
-const products_grid_element = document.querySelector('.js-products-grid');
-products_grid_element.innerHTML = products_grid;
+  const products_grid_element = document.querySelector('.js-products-grid');
+  products_grid_element.innerHTML = products_grid;
 
-const listAddToCart = document.querySelectorAll('.js-add-to-cart');
-listAddToCart.forEach(button => {
-  button.addEventListener('click', () => {
-    const productId = button.dataset.productId;
-    addToCart(productId);
+  const listAddToCart = document.querySelectorAll('.js-add-to-cart');
+  listAddToCart.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      addToCart(productId);
 
-    updateCartQuantity();
-  })
-});
+      updateCartQuantity();
+    })
+  });
+
+}

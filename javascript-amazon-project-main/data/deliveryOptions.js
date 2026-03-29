@@ -1,13 +1,13 @@
 export const deliveryOptions = [{
     id: '1',
     deliveryDate: 7,
-    pricePaisa: 0
+    priceCents: 0
 }, {
     id: '2',
     deliveryDate: 3,
-    pricePaisa: 499
+    priceCents: 499
 }, {
     id: '3',
     deliveryDate: 1,
-    pricePaisa: 999
+    priceCents: 999
 }];

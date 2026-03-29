@@ -15,13 +15,13 @@ export function renderPaymentSummary() {
         itemDetails.totalItems += item.quantity;
         products.forEach(productItem => {
             if (productItem.id === item.productId) {
-                itemDetails.totalPrice += item.quantity * productItem.pricePaisa;
+                itemDetails.totalPrice += item.quantity * productItem.priceCents;
             }
         })
 
         deliveryOptions.forEach(deliveryItem => {
             if (deliveryItem.id === item.deliveryDateId) {
-                itemDetails.shippingCharges += deliveryItem.pricePaisa;
+                itemDetails.shippingCharges += deliveryItem.priceCents;
             }
         });
     });

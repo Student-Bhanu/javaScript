@@ -6,14 +6,14 @@ class Products {
   image;
   name;
   rating;
-  pricePaisa;
+  priceCents;
 
   constructor(productDetails) {
     this.id = productDetails.id;
     this.image = productDetails.image;
     this.name = productDetails.name;
     this.rating = productDetails.rating;
-    this.pricePaisa = productDetails.pricePaisa;
+    this.priceCents = productDetails.priceCents;
   }
 
   getUrl() {
@@ -21,7 +21,7 @@ class Products {
   }
 
   getPrice() {
-    return `$${changeCurrencyFormat(this.pricePaisa)}`;
+    return `$${changeCurrencyFormat(this.priceCents)}`;
   }
 
   sizeChartHTML() {
@@ -83,6 +83,27 @@ const clothing = new Clothing({
 });
 
 
+export let products = [];
+
+export function loadProductsFromBackend(func) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map(productDetails => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Products(productDetails);
+    });
+
+    func();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
+}
+
+/*
 // every element become the object of Products class
 export const products = [
   {
@@ -749,6 +770,7 @@ export const products = [
   }
   return new Products(productDetails);
 });
+*/
 
 
 // practice about this

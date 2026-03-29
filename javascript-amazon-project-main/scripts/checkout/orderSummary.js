@@ -92,7 +92,7 @@ function deliveryOptionsHTML(cartIDX, cartItem) {
         const currentDate = dayjs();
         const deliveryDate = currentDate.add(deliveryItems.deliveryDate, 'days');
         const stringDate = deliveryDate.format('dddd, MMMM D');
-        const deliveryPrice = changeCurrencyFormat(deliveryItems.pricePaisa);
+        const deliveryPrice = changeCurrencyFormat(deliveryItems.priceCents);
         const isChecked = (deliveryItems.id === cartItem.deliveryDateId) ? 1 : 0;
 
         HTMLString += `
