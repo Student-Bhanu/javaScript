@@ -1,4 +1,6 @@
-import {changeCurrencyFormat} from '../scripts/utils/money.js'
+import { changeCurrencyFormat } from '../scripts/utils/money.js'
+
+
 class Products {
   id;
   image;
@@ -14,12 +16,16 @@ class Products {
     this.pricePaisa = productDetails.pricePaisa;
   }
 
-  getUrl(){
+  getUrl() {
     return `images/ratings/rating-${this.rating.stars * 10}.png`;
   }
 
-  getPrice(){
+  getPrice() {
     return `$${changeCurrencyFormat(this.pricePaisa)}`;
+  }
+
+  sizeChartHTML() {
+    return '';
   }
 };
 
@@ -39,6 +45,43 @@ const product1 = new Products({
     "apparel"
   ]
 });
+
+
+// Inheritance, inherit the property of Products class
+class Clothing extends Products {
+  sizeChartLink;
+
+  constructor(productDetails) {
+    // this will call the constructor of parent class so rest of the default operation must perform
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  sizeChartHTML() {
+    // thil will call the sizeChartFunction of parent class
+    // super.sizeChartHTML();
+    return `<a href="${this.sizeChartLink}" target="_blank">Chart Link</a>`;
+  }
+}
+
+const clothing = new Clothing({
+  id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+  image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+  name: "Adults Plain Cotton T-Shirt - 2 Pack",
+  rating: {
+    stars: 4.5,
+    count: 56
+  },
+  pricePaisa: 799,
+  keywords: [
+    "tshirts",
+    "apparel",
+    "mens"
+  ],
+  type: "clothing",
+  sizeChartLink: "images/clothing-size-chart.png"
+});
+
 
 // every element become the object of Products class
 export const products = [
@@ -701,5 +744,8 @@ export const products = [
     ]
   }
 ].map(productDetails => {
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Products(productDetails);
 });
